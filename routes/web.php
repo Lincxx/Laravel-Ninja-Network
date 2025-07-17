@@ -16,8 +16,12 @@ Route::get('/ninjas', function () {
     return view('ninjas.index', ["greeting" => "Hello", "ninjas" => $ninjas]);
 });
 
+Route::get('/ninjas/create', function () {
+    return view('ninjas.create');
+});
 
-// route wildcard
+
+// route wildcard - a catch at the moment
 
 Route::get('/ninjas/{id}', function ($id) { 
     //fetch record from DB  
