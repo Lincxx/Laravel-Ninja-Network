@@ -10,7 +10,7 @@ class NinjaController extends Controller
     public function index()
     {
         // route --> /ninjas/
-        $ninjas = Ninja::orderBy('created_at', 'desc')->paginate(10);
+        $ninjas = Ninja::with('dojo')->orderBy('created_at', 'desc')->paginate(10);
 
         // fetch all records from DB and pass to view
         return view('ninjas.index', ["ninjas" => $ninjas]);
@@ -18,7 +18,7 @@ class NinjaController extends Controller
 
     public function show($id)
     {
-        $ninja = Ninja::findOrFail($id);
+        $ninja = Ninja::with('dojo')->findOrFail($id);
         // route --> /ninjas/{id}
         // fetch single record from DB and pass to view
          return view('ninjas.show', ["ninja" => $ninja]);
