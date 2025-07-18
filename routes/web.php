@@ -8,10 +8,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/ninjas', [NinjaController::class, 'index']);
-
-Route::get('/ninjas/create', [NinjaController::class, 'create']);
-
-
+Route::get('/ninjas', [NinjaController::class, 'index'])->name('ninjas.index');
+Route::get('/ninjas/create', [NinjaController::class, 'create'])->name('ninjas.create');
 // route wildcard - a catch at the moment
-Route::get('/ninjas/{id}', [NinjaController::class, 'show']);
+Route::get('/ninjas/{id}', [NinjaController::class, 'show'])->name('ninjas.show');
