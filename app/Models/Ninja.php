@@ -9,7 +9,7 @@ class Ninja extends Model
 {
 
     //what columns can be mass assigned
-    protected $fillable = ['name', 'skill', 'bio']; 
+    protected $fillable = ['name', 'skill', 'bio', 'dojo_id']; 
 
     /** @use HasFactory<\Database\Factories\NinjaFactory> */
     use HasFactory;
