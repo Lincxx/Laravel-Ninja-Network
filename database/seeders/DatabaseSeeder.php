@@ -20,6 +20,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        $this->call(NinjaSeeder::class);
+    
+        $this->call(
+            [
+                DojoSeeder::class,
+                NinjaSeeder::class
+            ]
+        );
+        
     }
 }
