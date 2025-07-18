@@ -12,3 +12,4 @@ Route::get('/ninjas', [NinjaController::class, 'index'])->name('ninjas.index');
 Route::get('/ninjas/create', [NinjaController::class, 'create'])->name('ninjas.create');
 // route wildcard - a catch at the moment
 Route::get('/ninjas/{id}', [NinjaController::class, 'show'])->name('ninjas.show');
+Route::post('/ninjas', [NinjaController::class, 'store'])->name('ninjas.store');

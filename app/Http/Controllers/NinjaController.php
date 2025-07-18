@@ -33,10 +33,19 @@ class NinjaController extends Controller
         return view('ninjas.create', ['dojos' => $dojos]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
         // route --> /ninjas (POST)
         // create new record in DB
+        $validatedData = $request->validate([
+            'name'    => 'required|string|max:255',
+            'skill'   => 'required|integer|min:0|max:100',
+            'bio'     => 'required|string|min:20|max:255',
+            'dojo_id' => 'required|exists:dojos,id',
+        ]);
+
+        Ninja::create($validatedData);
+        return redirect()->route('ninjas.index');
     }
 
     public function destyroy($id)
