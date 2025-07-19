@@ -17,9 +17,11 @@ class NinjaController extends Controller
         return view('ninjas.index', ["ninjas" => $ninjas]);
     }
 
-    public function show($id)
+    public function show(Ninja $ninja)
     {
-        $ninja = Ninja::with('dojo')->findOrFail($id);
+        //$ninja = Ninja::with('dojo')->findOrFail($id);
+        //converted
+        $ninja->load('dojo');
         // route --> /ninjas/{id}
         // fetch single record from DB and pass to view
          return view('ninjas.show', ["ninja" => $ninja]);
@@ -48,11 +50,12 @@ class NinjaController extends Controller
         return redirect()->route('ninjas.index')->with('success', 'Ninja created successfully');
     }
 
-    public function destroy($id)
+    public function destroy(Ninja $ninja)
     {
         // route --> /ninjas/{id} (DELETE)
         // delete record from DB
-        $ninja = Ninja::findOrFail($id);
+        //Route Model Binding - we no longer need to get the ninja, laravel does it for us
+        //$ninja = Ninja::findOrFail($ninja);
         $ninja->delete();
 
         return redirect()->route('ninjas.index')->with('success', 'Ninja deleted successfully');
