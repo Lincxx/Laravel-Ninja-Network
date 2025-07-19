@@ -48,7 +48,7 @@ class NinjaController extends Controller
         return redirect()->route('ninjas.index');
     }
 
-    public function destyroy($id)
+    public function destroy($id)
     {
         // route --> /ninjas/{id} (DELETE)
         // delete record from DB
